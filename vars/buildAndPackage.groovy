@@ -4,7 +4,7 @@ def call(Map config) {
         def projectName = ${config.projectName}
         echo projectName
         bat '''
-        cd %projectName%
+        cd ${projectName}
         mvn clean install -DskipTests=true versions:set -DnewVersion='%version%' versions:update-child-modules
         '''
     }
