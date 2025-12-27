@@ -1,8 +1,10 @@
 def call(Map config) {
     node {
-        echo "${config.projectName}"
+        echo "Maven Build Started"
+        def projectName = ${config.projectName}
+        echo projectName
         bat '''
-        cd ${config.projectName}
+        cd "${config.projectName}"
         mvn clean install -DskipTests=true versions:set -DnewVersion='%version%' versions:update-child-modules
         '''
     }
