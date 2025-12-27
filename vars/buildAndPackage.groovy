@@ -1,7 +1,8 @@
-def call() {
+def call(Map config) {
     node {
+        echo "${config.projectName}"
         bat '''
-        cd %projectName%
+        cd %config.projectName%
         mvn clean install -DskipTests=true versions:set -DnewVersion='%version%' versions:update-child-modules
         '''
     }
